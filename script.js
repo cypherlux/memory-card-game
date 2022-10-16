@@ -3,6 +3,7 @@ const cards = document.querySelectorAll(".card")
 let matchedPairs = 0;
 let cardOne, cardTwo;
 let disableDeck = false;
+let gameStatusFinish = document.getElementById("game-status-finish");
 
 function flipCard(evt) {
     console.log('flipCard was executed');
@@ -26,8 +27,11 @@ function matchCards(img1, img2) {
         matchedPairs++;
         if (matchedPairs == 8) {
             console.log('YOU WIN :D');
+            setTimeout(function(){
+                alert("You win!!"); 
+           }, 1000);
             return;
-            }
+        }
         cardOne.removeEventListener("click", flipCard);
         cardTwo.removeEventListener("click", flipCard);
         cardOne = cardTwo = "";
@@ -62,6 +66,7 @@ function shuffleCards() {
         card.addEventListener("click", flipCard);
 });
 }
+
 
 
 
